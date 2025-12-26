@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PupHub Design System - CLS Optimized */
+
+@layer base {
+  :root {
+    /* Primary Orange */
+    --primary: 37 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Dark Blue */
+    --secondary: 213 54% 24%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Background & Surface */
+    --background: 0 0% 100%;
+    --foreground: 213 54% 24%;
+    
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 213 54% 24%;
+    
+    /* Muted/Neutral */
+    --muted: 0 0% 96%;
+    --muted-foreground: 213 20% 45%;
+    
+    /* Accent (light orange) */
+    --accent: 37 100% 95%;
+    --accent-foreground: 37 91% 45%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 54% 24%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 37 91% 55%;
+    
+    --radius: 0.5rem;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 213 54% 24%;
+    --sidebar-primary: 37 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 37 100% 95%;
+    --sidebar-accent-foreground: 213 54% 24%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 37 91% 55%;
+  }
+
+  .dark {
+    --primary: 37 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 213 54% 20%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --background: 213 54% 10%;
+    --foreground: 0 0% 95%;
+    
+    --card: 213 54% 15%;
+    --card-foreground: 0 0% 95%;
+    
+    --muted: 213 30% 20%;
+    --muted-foreground: 0 0% 70%;
+    
+    --accent: 37 50% 20%;
+    --accent-foreground: 37 91% 70%;
+    
+    --popover: 213 54% 15%;
+    --popover-foreground: 0 0% 95%;
+    
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 213 30% 25%;
+    --input: 213 30% 25%;
+    --ring: 37 91% 55%;
+    
+    --sidebar-background: 213 54% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 37 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 30% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 213 30% 25%;
+    --sidebar-ring: 37 91% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Fallback font metrics to prevent CLS */
+  @font-face {
+    font-family: 'Poppins';
+    src: local('Poppins');
+    font-display: swap;
+    size-adjust: 100%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 10%;
+  }
+}
+
+@layer components {
+  /* Skeleton shimmer animation */
+  .skeleton-shimmer {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* CLS-safe image container */
+  .img-container {
+    @apply relative overflow-hidden bg-muted;
+  }
+  
+  .img-container img {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+  
+  /* Script font for headings */
+  .font-script {
+    font-family: 'Dancing Script', cursive;
+  }
+}
+
+@layer utilities {
+  /* Aspect ratio utilities for CLS prevention */
+  .aspect-product {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect-banner {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-hero {
+    aspect-ratio: 16 / 10;
+  }
+  
+  .aspect-category {
+    aspect-ratio: 1 / 1;
+  }
+}
